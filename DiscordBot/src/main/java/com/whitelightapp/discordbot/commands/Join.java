@@ -22,8 +22,8 @@ public class Join implements ICommand {
 
     @Override
     public void handle(CommandContext ctx) {
-        TextChannel channel = ctx.getEvent().getChannel();
-        Member selfMember = ctx.getGuild().getSelfMember();
+        TextChannel channel = ctx.getChannel();
+        Member selfMember = ctx.getSelfMember();
         GuildVoiceState selfVoiceState = selfMember.getVoiceState();
 
         if (selfVoiceState.inVoiceChannel()) {
@@ -31,7 +31,7 @@ public class Join implements ICommand {
             return;
         }
 
-        Member member = ctx.getEvent().getMember();
+        Member member = ctx.getMember();
         GuildVoiceState memberVoiceState = member.getVoiceState();
 
         if (!memberVoiceState.inVoiceChannel()) {
